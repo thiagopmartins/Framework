@@ -66,7 +66,24 @@ namespace FrameworkTestApi.Application.Handlers
 
         private bool IsPrimeNumber(int number)
         {
-            return GetDivisorsNumber(number).Count() <= 2;
+            bool isPrime = true;
+            var divisors = new List<int>();
+
+            for (int i = 1; i <= number; i++)
+            {
+                if (number % i == 0)
+                {
+                    divisors.Add(i);
+                }
+
+                if (divisors.Count > 2)
+                {
+                    isPrime = false;
+                    break;
+                }
+            };
+
+            return isPrime;
         }
 
         #endregion
